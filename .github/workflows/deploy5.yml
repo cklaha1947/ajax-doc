@@ -20,8 +20,8 @@ jobs:
 
       - name: Build & Push Docker Image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/ajax-doc:latest .
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ajax-doc:latest
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/ajax-php-crud:latest .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ajax-php-crud:latest
 
       - name: Deploy on EC2
         uses: appleboy/ssh-action@master
@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/ajax-doc:latest
-            docker stop ajax-doc || true
-            docker rm ajax-doc || true
-            docker run -d -p 8000:80 --name ajax-doc ${{ secrets.DOCKERHUB_USERNAME }}/ajax-doc:latest
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/ajax-php-crud:latest
+            docker stop ajax-php-crud || true
+            docker rm ajax-php-crud || true
+            docker run -d -p 8000:80 --name ajax-php-crud ${{ secrets.DOCKERHUB_USERNAME }}/ajax-php-crud:latest
