@@ -77,7 +77,7 @@
 
 
     <form id="studentForm" class="form-container" action="ins.php" method="post" enctype="multipart/form-data">
-        <h2 style="text-align: center;">Insert Form New</h2>
+        <h2 style="text-align: center;">Insert Form </h2>
 
         <div class="form-row">
             <label>Name</label>
